@@ -1,0 +1,19 @@
+<section class="register__container">
+    <form class="register__container--form" [formGroup]="form">  
+        <mat-form-field class="input">
+            <mat-label>Identificacion</mat-label>
+            <input type="text" matInput [formControl]="idFormControl">
+            <mat-error *ngIf="idFormControl.hasError('maxlength') && !idFormControl.hasError('pattern') && !idFormControl.hasError('required')">
+            Este campo solo admite maximo 15 digitos 
+            </mat-error>
+            <mat-error *ngIf="idFormControl.hasError('pattern') && !idFormControl.hasError('required')">
+            Este campo solo admite digitos numericos
+            </mat-error>
+            <mat-error *ngIf="idFormControl.hasError('required')">
+            Este campo es necesario
+            </mat-error>
+        </mat-form-field>
+        <button (click)="readPatient()" class="button">Consultar</button>
+
+    </form>
+</section>
